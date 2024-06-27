@@ -10,12 +10,12 @@ console.log(sum)
 
 function isEven(a) {
     if(Number(a) % 2 === 0){
-        return "true"
+        return true
     }else{
-        return "false"
+        return false
     }
 }
-let checkForEven = isEven(1202)
+let checkForEven = isEven(1201)
 console.log(checkForEven)
 
 // 3) Write a function named ‘findMax’ that takes an array of numbers and returns the largest number in the array.
