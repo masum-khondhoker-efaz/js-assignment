@@ -9,14 +9,16 @@ console.log(sum)
 // 2) Write a function named ‘isEven’ that takes one argument and returns true if the number is even, and false otherwise.
 
 function isEven(a) {
-    if(Number(a) % 2 === 0){
-        return true
-    }else{
-        return false
+    if (typeof a !== 'number') {
+        throw new Error("Argument must be a number.");
     }
+    return a % 2 === 0;
 }
-let checkForEven = isEven(1201)
+let checkForEven = isEven(120)
 console.log(checkForEven)
+
+checkForEven = isEven(7);
+console.log(checkForEven); 
 
 // 3) Write a function named ‘findMax’ that takes an array of numbers and returns the largest number in the array.
 
@@ -60,7 +62,7 @@ function filterOddNumbers(a) {
     }
     let finalArray = []
     for (let i = 0; i < a.length; i++) {
-        if (a[i] % 2 != 0) {
+        if (a[i] % 2 !== 0) {
             finalArray.push(a[i])
         }
     }
@@ -78,7 +80,9 @@ function sumArray(a) {
     }
     let sum = 0
     for (let i = 0; i < a.length; i++) {
-        sum += a[i]
+        if(typeof a[i] === 'number') {
+            sum += a[i]
+        }  
     }
     return sum
 }
@@ -91,6 +95,11 @@ console.log(sumOfArray)
 function sortArray(a) {
     if (a.length === 0) {
         return a
+    }
+    for (let i = 0; i < a.length; i++) {
+        if (typeof a[i] !== 'number') {
+            return a;
+        }
     }
     for (let i = 0; i < a.length; i++) {
         for (let j = 0; j < a.length; j++) {
@@ -131,5 +140,5 @@ function capitalizeFirstLetter(a) {
     return charArr.join("")
 }
 
-let capitalizedStr = capitalizeFirstLetter("oSTAD")
+let capitalizedStr = capitalizeFirstLetter("oSTAD!")
 console.log(capitalizedStr)
